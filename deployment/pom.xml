@@ -15,6 +15,10 @@
       <artifactId>quarkus-arc-deployment</artifactId>
     </dependency>
     <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-awt-deployment</artifactId>
+    </dependency>
+    <dependency>
       <groupId>io.quarkiverse.pdfbox</groupId>
       <artifactId>quarkus-pdfbox</artifactId>
       <version>${project.version}</version>
