@@ -40,8 +40,6 @@ class PdfBoxProcessor {
         resource.produce(new RuntimeInitializedClassBuildItem("org.apache.pdfbox.pdmodel.encryption.PublicKeySecurityHandler"));
         // This is started by anybody doing graphics at startup time, including pdfbox instantiating an empty image
         resource.produce(new RuntimeInitializedClassBuildItem("sun.java2d.Disposer"));
-        // This causes the pdfbox to log at static init time, which creates a JUL which is forbidden
-        resource.produce(new RuntimeInitializedClassBuildItem("com.openhtmltopdf.resource.FSEntityResolver"));
     }
 
     @BuildStep
