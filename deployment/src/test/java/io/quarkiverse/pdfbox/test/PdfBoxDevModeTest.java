@@ -8,7 +8,7 @@ import org.junit.jupiter.api.extension.RegisterExtension;
 
 import io.quarkus.test.QuarkusDevModeTest;
 
-public class PdfboxDevModeTest {
+public class PdfBoxDevModeTest {
 
     // Start hot reload (DevMode) test with your extension loaded
     @RegisterExtension

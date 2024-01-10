@@ -22,7 +22,7 @@ import jakarta.ws.rs.Path;
 
 @Path("/pdfbox")
 @ApplicationScoped
-public class PdfboxResource {
+public class PdfBoxResource {
     // add some rest methods here
 
     @GET

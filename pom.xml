@@ -23,11 +23,10 @@
     <url>https://github.com/quarkiverse/quarkus-pdfbox</url>
   </scm>
   <properties>
-    <compiler-plugin.version>3.11.0</compiler-plugin.version>
     <maven.compiler.release>11</maven.compiler.release>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    <quarkus.version>3.6.4</quarkus.version>
+    <quarkus.version>3.2.9.Final</quarkus.version>
   </properties>
   <dependencyManagement>
     <dependencies>
@@ -47,15 +46,6 @@
           <groupId>io.quarkus</groupId>
           <artifactId>quarkus-maven-plugin</artifactId>
           <version>${quarkus.version}</version>
-        </plugin>
-        <plugin>
-          <artifactId>maven-compiler-plugin</artifactId>
-          <version>${compiler-plugin.version}</version>
-          <configuration>
-            <compilerArgs>
-              <arg>-parameters</arg>
-            </compilerArgs>
-          </configuration>
         </plugin>
       </plugins>
     </pluginManagement>
