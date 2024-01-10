@@ -1,4 +1,4 @@
-= Quarkus Pdfbox
+= Quarkus PDFBox
 
 include::./includes/attributes.adoc[]
 

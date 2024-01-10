@@ -11,7 +11,7 @@
   <artifactId>quarkus-pdfbox-parent</artifactId>
   <version>999-SNAPSHOT</version>
   <packaging>pom</packaging>
-  <name>Quarkus Pdfbox - Parent</name>
+  <name>Quarkus PDFBox - Parent</name>
   <modules>
     <module>deployment</module>
     <module>runtime</module>

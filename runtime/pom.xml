@@ -9,7 +9,7 @@
         <version>999-SNAPSHOT</version>
     </parent>
     <artifactId>quarkus-pdfbox</artifactId>
-    <name>Quarkus Pdfbox - Runtime</name>
+    <name>Quarkus PDFBox - Runtime</name>
     <dependencies>
         <dependency>
             <groupId>io.quarkus</groupId>

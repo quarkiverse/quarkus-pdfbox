@@ -8,7 +8,7 @@
     <version>999-SNAPSHOT</version>
   </parent>
   <artifactId>quarkus-pdfbox-integration-tests</artifactId>
-  <name>Quarkus Pdfbox - Integration Tests</name>
+  <name>Quarkus PDFBox - Integration Tests</name>
   <properties>
     <skipITs>true</skipITs>
   </properties>

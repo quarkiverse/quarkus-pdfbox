@@ -8,7 +8,7 @@
     <version>999-SNAPSHOT</version>
   </parent>
   <artifactId>quarkus-pdfbox-deployment</artifactId>
-  <name>Quarkus Pdfbox - Deployment</name>
+  <name>Quarkus PDFBox - Deployment</name>
   <dependencies>
     <dependency>
       <groupId>io.quarkus</groupId>
