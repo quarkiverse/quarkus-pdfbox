@@ -1,0 +1,5 @@
+name: quarkus-pdfbox
+title: PDFBox
+version: dev
+nav:
+  - modules/ROOT/nav.adoc
