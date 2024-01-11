@@ -16,16 +16,24 @@
  */
 package io.quarkiverse.pdfbox.it;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
+import jakarta.ws.rs.Produces;
 
 import org.apache.pdfbox.Loader;
 import org.apache.pdfbox.io.IOUtils;
 import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDPage;
+import org.apache.pdfbox.pdmodel.PDPageContentStream;
+import org.apache.pdfbox.pdmodel.common.PDRectangle;
+import org.apache.pdfbox.pdmodel.font.PDFont;
+import org.apache.pdfbox.pdmodel.font.PDType0Font;
 import org.apache.pdfbox.text.PDFTextStripper;
 
 @Path("/pdfbox")
@@ -45,5 +53,30 @@ public class PdfBoxResource {
         PDDocument pdf = Loader.loadPDF(content);
         PDFTextStripper stripper = new PDFTextStripper();
         return stripper.getText(pdf).trim();
+    }
+
+    @GET
+    @Path("/create-pdf")
+    @Produces("application/pdf")
+    public byte[] createPDF() throws IOException {
+        String title = "Apache PDFBox Center Text PDF Document";
+
+        final PDDocument doc = new PDDocument();
+        PDPage page = new PDPage(PDRectangle.A4);
+        doc.addPage(page);
+
+        PDPageContentStream stream = new PDPageContentStream(doc, page);
+
+        stream.beginText();
+        stream.newLineAtOffset(0, 0);
+        PDFont font = PDType0Font.load(doc, getClass().getClassLoader().getResourceAsStream("Roboto-Bold.ttf"));
+        stream.setFont(font, 12);
+        stream.showText(title);
+        stream.endText();
+        stream.close();
+
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        doc.save(baos);
+        return baos.toByteArray();
     }
 }
