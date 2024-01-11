@@ -27,7 +27,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <pdfbox.version>3.0.1</pdfbox.version>
-    <quarkus.version>3.2.9.Final</quarkus.version>
+    <quarkus.version>3.6.4</quarkus.version>
   </properties>
   <dependencyManagement>
     <dependencies>
