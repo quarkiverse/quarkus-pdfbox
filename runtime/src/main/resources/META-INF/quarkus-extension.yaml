@@ -1,4 +1,4 @@
-name: PDFBox
+name: Apache PDFBox
 description: Create and manipulate PDF documents and forms using the Apache PDFBox library.
 metadata:
   keywords:
