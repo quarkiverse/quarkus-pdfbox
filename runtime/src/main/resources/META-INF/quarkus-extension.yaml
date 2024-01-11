@@ -1,9 +1,10 @@
 name: PDFBox
-#description: Do something useful.
+description: Create and manipulate PDF documents and forms using the Apache PDFBox library.
 metadata:
-#  keywords:
-#    - pdfbox
-#  guide: https://quarkiverse.github.io/quarkiverse-docs/pdfbox/dev/ # To create and publish this guide, see https://github.com/quarkiverse/quarkiverse/wiki#documenting-your-extension
-#  categories:
-#    - "miscellaneous"
-#  status: "preview"
+  keywords:
+    - pdfbox
+    - pdf
+  guide: https://docs.quarkiverse.io/quarkus-pdfbox/dev/index.html
+  categories:
+    - "miscellaneous"
+  status: "stable"
