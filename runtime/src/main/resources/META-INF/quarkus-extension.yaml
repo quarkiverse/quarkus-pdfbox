@@ -5,6 +5,7 @@ metadata:
     - pdfbox
     - pdf
   guide: https://docs.quarkiverse.io/quarkus-pdfbox/dev/index.html
+  icon-url: "https://www.apache.org/foundation/press/kit/poweredBy/Apache_PoweredBy.svg"
   categories:
     - "miscellaneous"
   status: "stable"
