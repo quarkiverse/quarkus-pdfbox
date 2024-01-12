@@ -10,7 +10,7 @@ on:
 env:
   ECOSYSTEM_CI_REPO: quarkusio/quarkus-ecosystem-ci
   ECOSYSTEM_CI_REPO_FILE: context.yaml
-  JAVA_VERSION: 11
+  JAVA_VERSION: 17
 
   #########################
   # Repo specific setting #
@@ -31,7 +31,7 @@ jobs:
     name: "Build against latest Quarkus snapshot"
     runs-on: ubuntu-latest
     # Allow <ADMIN> to manually launch the ecosystem CI in addition to the bots
-    if: github.actor == 'quarkusbot' || github.actor == 'quarkiversebot' || github.actor == '<ADMIN>'
+    if: github.actor == 'quarkusbot' || github.actor == 'quarkiversebot' || github.actor == 'gastaldi'
 
     steps:
       - name: Install yq
