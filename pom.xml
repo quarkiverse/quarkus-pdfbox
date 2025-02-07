@@ -8,7 +8,7 @@
   </parent>
   <groupId>io.quarkiverse.pdfbox</groupId>
   <artifactId>quarkus-pdfbox-parent</artifactId>
-  <version>999-SNAPSHOT</version>
+  <version>1.1.0</version>
   <packaging>pom</packaging>
   <name>Quarkus PDFBox - Parent</name>
   <modules>
@@ -19,7 +19,7 @@
     <connection>scm:git:git@github.com:quarkiverse/quarkus-pdfbox.git</connection>
     <developerConnection>scm:git:git@github.com:quarkiverse/quarkus-pdfbox.git</developerConnection>
     <url>https://github.com/quarkiverse/quarkus-pdfbox</url>
-    <tag>HEAD</tag>
+    <tag>1.1.0</tag>
   </scm>
   <properties>
     <pdfbox.version>3.0.4</pdfbox.version>
