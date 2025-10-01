@@ -7,7 +7,6 @@ import io.quarkus.deployment.builditem.FeatureBuildItem;
 import io.quarkus.deployment.builditem.NativeImageEnableAllCharsetsBuildItem;
 import io.quarkus.deployment.builditem.NativeImageFeatureBuildItem;
 import io.quarkus.deployment.builditem.nativeimage.NativeImageResourceDirectoryBuildItem;
-import io.quarkus.deployment.builditem.nativeimage.ReflectiveHierarchyBuildItem;
 import io.quarkus.deployment.builditem.nativeimage.RuntimeInitializedClassBuildItem;
 
 class PdfBoxProcessor {
@@ -49,10 +48,5 @@ class PdfBoxProcessor {
         resource.produce(new NativeImageResourceDirectoryBuildItem("org/apache/pdfbox/resources/glyphlist"));
         resource.produce(new NativeImageResourceDirectoryBuildItem("org/apache/fontbox/cmap"));
         resource.produce(new NativeImageResourceDirectoryBuildItem("org/apache/fontbox/unicode"));
-    }
-
-    @BuildStep
-    void registerForReflection(BuildProducer<ReflectiveHierarchyBuildItem> reflectiveHierarchy) {
-        reflectiveHierarchy.produce(ReflectiveHierarchyBuildItem.builder(PDParentTreeValue.class).build());
     }
 }
