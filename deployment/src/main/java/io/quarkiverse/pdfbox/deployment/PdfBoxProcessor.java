@@ -1,5 +1,8 @@
 package io.quarkiverse.pdfbox.deployment;
 
+import org.apache.pdfbox.pdmodel.documentinterchange.logicalstructure.PDParentTreeValue;
+import org.apache.pdfbox.pdmodel.encryption.StandardSecurityHandler;
+
 import io.quarkiverse.pdfbox.runtime.graal.PdfBoxFeature;
 import io.quarkus.deployment.annotations.BuildProducer;
 import io.quarkus.deployment.annotations.BuildStep;
@@ -7,6 +10,7 @@ import io.quarkus.deployment.builditem.FeatureBuildItem;
 import io.quarkus.deployment.builditem.NativeImageEnableAllCharsetsBuildItem;
 import io.quarkus.deployment.builditem.NativeImageFeatureBuildItem;
 import io.quarkus.deployment.builditem.nativeimage.NativeImageResourceDirectoryBuildItem;
+import io.quarkus.deployment.builditem.nativeimage.ReflectiveClassBuildItem;
 import io.quarkus.deployment.builditem.nativeimage.RuntimeInitializedClassBuildItem;
 
 class PdfBoxProcessor {
@@ -48,5 +52,11 @@ class PdfBoxProcessor {
         resource.produce(new NativeImageResourceDirectoryBuildItem("org/apache/pdfbox/resources/glyphlist"));
         resource.produce(new NativeImageResourceDirectoryBuildItem("org/apache/fontbox/cmap"));
         resource.produce(new NativeImageResourceDirectoryBuildItem("org/apache/fontbox/unicode"));
+    }
+
+    @BuildStep
+    void registerForReflection(BuildProducer<ReflectiveClassBuildItem> reflectiveHierarchy) {
+        reflectiveHierarchy.produce(
+                ReflectiveClassBuildItem.builder(PDParentTreeValue.class, StandardSecurityHandler.class).methods().build());
     }
 }
