@@ -86,7 +86,7 @@ public class PdfBoxResource {
     @Path("/split-pdf")
     @Produces("text/plain")
     public int splitPDF() throws IOException {
-        URL resource = getClass().getClassLoader().getResource("3-pages.pdf");
+        URL resource = getClass().getClassLoader().getResource("sample-tables.pdf");
         final byte[] content;
         // Parse PDF using PDFBox
         try (InputStream inputStream = resource.openStream()) {
