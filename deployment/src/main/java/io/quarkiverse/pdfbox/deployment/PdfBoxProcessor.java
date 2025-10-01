@@ -1,6 +1,7 @@
 package io.quarkiverse.pdfbox.deployment;
 
 import org.apache.pdfbox.pdmodel.documentinterchange.logicalstructure.PDParentTreeValue;
+import org.apache.pdfbox.pdmodel.encryption.StandardSecurityHandler;
 
 import io.quarkiverse.pdfbox.runtime.graal.PdfBoxFeature;
 import io.quarkus.deployment.annotations.BuildProducer;
@@ -55,6 +56,7 @@ class PdfBoxProcessor {
 
     @BuildStep
     void registerForReflection(BuildProducer<ReflectiveClassBuildItem> reflectiveHierarchy) {
-        reflectiveHierarchy.produce(ReflectiveClassBuildItem.builder(PDParentTreeValue.class).methods().build());
+        reflectiveHierarchy.produce(
+                ReflectiveClassBuildItem.builder(PDParentTreeValue.class, StandardSecurityHandler.class).methods().build());
     }
 }
