@@ -20,6 +20,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.util.List;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.ws.rs.GET;
@@ -28,6 +29,7 @@ import jakarta.ws.rs.Produces;
 
 import org.apache.pdfbox.Loader;
 import org.apache.pdfbox.io.IOUtils;
+import org.apache.pdfbox.multipdf.Splitter;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
@@ -78,5 +80,40 @@ public class PdfBoxResource {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         doc.save(baos);
         return baos.toByteArray();
+    }
+
+    @GET
+    @Path("/split-pdf")
+    @Produces("text/plain")
+    public int splitPDF() throws IOException {
+        final PDDocument doc = new PDDocument();
+        PDFont font = PDType0Font.load(doc, getClass().getClassLoader().getResourceAsStream("Roboto-Bold.ttf"));
+
+        {
+            PDPage page = new PDPage(PDRectangle.A4);
+            doc.addPage(page);
+            PDPageContentStream stream = new PDPageContentStream(doc, page);
+            stream.beginText();
+            stream.newLineAtOffset(0, 0);
+            stream.setFont(font, 12);
+            stream.showText("Page 1");
+            stream.endText();
+            stream.close();
+        }
+        {
+            PDPage page = new PDPage(PDRectangle.A4);
+            doc.addPage(page);
+            PDPageContentStream stream = new PDPageContentStream(doc, page);
+            stream.beginText();
+            stream.newLineAtOffset(0, 0);
+            stream.setFont(font, 12);
+            stream.showText("Page 2");
+            stream.endText();
+            stream.close();
+        }
+        Splitter splitter = new Splitter();
+        splitter.setSplitAtPage(1);
+        List<PDDocument> split = splitter.split(doc);
+        return split.size();
     }
 }

@@ -1,5 +1,7 @@
 package io.quarkiverse.pdfbox.deployment;
 
+import org.apache.pdfbox.pdmodel.documentinterchange.logicalstructure.PDParentTreeValue;
+
 import io.quarkiverse.pdfbox.runtime.graal.PdfBoxFeature;
 import io.quarkus.deployment.annotations.BuildProducer;
 import io.quarkus.deployment.annotations.BuildStep;
