@@ -47,6 +47,6 @@ public class PdfBoxResourceTest {
                 .when().get("/pdfbox/split-pdf")
                 .then()
                 .statusCode(200)
-                .body(equalTo("2"));
+                .body(equalTo("3"));
     }
 }

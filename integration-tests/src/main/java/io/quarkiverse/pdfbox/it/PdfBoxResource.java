@@ -86,34 +86,16 @@ public class PdfBoxResource {
     @Path("/split-pdf")
     @Produces("text/plain")
     public int splitPDF() throws IOException {
-        final PDDocument doc = new PDDocument();
-        PDFont font = PDType0Font.load(doc, getClass().getClassLoader().getResourceAsStream("Roboto-Bold.ttf"));
-
-        {
-            PDPage page = new PDPage(PDRectangle.A4);
-            doc.addPage(page);
-            PDPageContentStream stream = new PDPageContentStream(doc, page);
-            stream.beginText();
-            stream.newLineAtOffset(0, 0);
-            stream.setFont(font, 12);
-            stream.showText("Page 1");
-            stream.endText();
-            stream.close();
+        URL resource = getClass().getClassLoader().getResource("3-pages.pdf");
+        final byte[] content;
+        // Parse PDF using PDFBox
+        try (InputStream inputStream = resource.openStream()) {
+            content = IOUtils.toByteArray(inputStream);
         }
-        {
-            PDPage page = new PDPage(PDRectangle.A4);
-            doc.addPage(page);
-            PDPageContentStream stream = new PDPageContentStream(doc, page);
-            stream.beginText();
-            stream.newLineAtOffset(0, 0);
-            stream.setFont(font, 12);
-            stream.showText("Page 2");
-            stream.endText();
-            stream.close();
-        }
+        PDDocument pdf = Loader.loadPDF(content);
         Splitter splitter = new Splitter();
         splitter.setSplitAtPage(1);
-        List<PDDocument> split = splitter.split(doc);
+        List<PDDocument> split = splitter.split(pdf);
         return split.size();
     }
 }
