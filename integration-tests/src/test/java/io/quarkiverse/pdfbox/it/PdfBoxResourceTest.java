@@ -1,6 +1,7 @@
 package io.quarkiverse.pdfbox.it;
 
 import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -38,5 +39,14 @@ public class PdfBoxResourceTest {
         PDDocument pdf = Loader.loadPDF(body);
         String text = new PDFTextStripper().getText(pdf).trim();
         assertEquals("Apache PDFBox Center Text PDF Document", text);
+    }
+
+    @Test
+    public void should_split_pdf() throws Exception {
+        given()
+                .when().get("/pdfbox/split-pdf")
+                .then()
+                .statusCode(200)
+                .body(equalTo("3"));
     }
 }

@@ -20,6 +20,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.util.List;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.ws.rs.GET;
@@ -28,6 +29,7 @@ import jakarta.ws.rs.Produces;
 
 import org.apache.pdfbox.Loader;
 import org.apache.pdfbox.io.IOUtils;
+import org.apache.pdfbox.multipdf.Splitter;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
@@ -78,5 +80,22 @@ public class PdfBoxResource {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         doc.save(baos);
         return baos.toByteArray();
+    }
+
+    @GET
+    @Path("/split-pdf")
+    @Produces("text/plain")
+    public int splitPDF() throws IOException {
+        URL resource = getClass().getClassLoader().getResource("3-pages.pdf");
+        final byte[] content;
+        // Parse PDF using PDFBox
+        try (InputStream inputStream = resource.openStream()) {
+            content = IOUtils.toByteArray(inputStream);
+        }
+        PDDocument pdf = Loader.loadPDF(content);
+        Splitter splitter = new Splitter();
+        splitter.setSplitAtPage(1);
+        List<PDDocument> split = splitter.split(pdf);
+        return split.size();
     }
 }
