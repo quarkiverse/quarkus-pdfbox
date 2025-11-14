@@ -24,6 +24,7 @@ import java.util.List;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.ws.rs.GET;
+import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
 
@@ -98,4 +99,23 @@ public class PdfBoxResource {
         List<PDDocument> split = splitter.split(pdf);
         return split.size();
     }
+
+    @POST
+    @Path("/extract-markdown")
+    @Produces("text/markdown")
+    public String extractTextAsMarkdown(final byte[] file) throws IOException {
+        try (final PDDocument document = Loader.loadPDF(file)) {
+            final PDFTextStripper stripper = new PDFTextStripper();
+            final String rawText = stripper.getText(document);
+
+            final String markdown = rawText
+                    .replaceAll("\r\n?", "\n") // normalize \r\n or \r to \n
+                    .replaceAll("(?m)^\\s*(\\d+\\.)", "- $1") // numbered lists to bullets
+                    .replaceAll("(?m)^\\s*([A-Z][A-Z ]{3,})$", "## $1") // uppercase headings to markdown headings
+                    .replaceAll("\n{2,}", "\n\n"); // normalize spacing
+
+            return markdown.trim();
+        }
+    }
+
 }

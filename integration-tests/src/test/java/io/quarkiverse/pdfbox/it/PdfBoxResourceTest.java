@@ -49,4 +49,25 @@ public class PdfBoxResourceTest {
                 .statusCode(200)
                 .body(equalTo("11"));
     }
+
+    @Test
+    public void should_extract_markdown() {
+        // Generate PDF first
+        byte[] body = given()
+                .when().get("/pdfbox/create-pdf")
+                .then()
+                .statusCode(200)
+                .contentType("application/pdf")
+                .extract().asByteArray();
+        // Extract markdown
+        given()
+                .when()
+                .body(body)
+                .post("/pdfbox/extract-markdown")
+                .then()
+                .statusCode(200)
+                .log().ifValidationFails()
+                .body(is("Apache PDFBox Center Text PDF Document"));
+    }
+
 }
