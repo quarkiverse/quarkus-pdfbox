@@ -6,6 +6,7 @@ metadata:
     - pdf
   guide: https://docs.quarkiverse.io/quarkus-pdfbox/dev/index.html
   icon-url: "https://svn.apache.org/repos/asf/comdev/project-logos/originals/pdfbox.svg"
+  lib-ga: org.apache.pdfbox:pdfbox[https://pdfbox.apache.org/]
   categories:
     - "miscellaneous"
   status: "stable"
