@@ -50,6 +50,9 @@ class PdfBoxProcessor {
     public void registerNativeResources(BuildProducer<NativeImageResourceDirectoryBuildItem> resource) {
         resource.produce(new NativeImageResourceDirectoryBuildItem("org/apache/pdfbox/resources/afm"));
         resource.produce(new NativeImageResourceDirectoryBuildItem("org/apache/pdfbox/resources/glyphlist"));
+        resource.produce(new NativeImageResourceDirectoryBuildItem("org/apache/pdfbox/resources/icc"));
+        resource.produce(new NativeImageResourceDirectoryBuildItem("org/apache/pdfbox/resources/text"));
+        resource.produce(new NativeImageResourceDirectoryBuildItem("org/apache/pdfbox/resources/ttf"));
         resource.produce(new NativeImageResourceDirectoryBuildItem("org/apache/fontbox/cmap"));
         resource.produce(new NativeImageResourceDirectoryBuildItem("org/apache/fontbox/unicode"));
     }
