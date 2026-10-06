@@ -17,4 +17,3 @@ jobs:
     secrets: inherit
     with:
       ecosystem_ci_repo_path: quarkiverse-pdfbox
-      java_version: 17
