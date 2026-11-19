@@ -35,9 +35,9 @@ Documentation is published in https://docs.quarkiverse.io/quarkus-pdfbox/dev/ind
 | Quarkus PDFBox version | Quarkus version |
 | ---------------------- | --------------- |
 | 1.2.x                  | 3.27.1+         |
-| 2.x                    | 4.0.0.Beta1+    |
+| 4.x                    | 4.0.0.Beta1+    |
 
-2.x targets Quarkus 4 and requires JDK 21. If you are still on Quarkus 3, stay on 1.2.x, which is maintained from the `1.x` branch.
+4.x targets Quarkus 4 and requires JDK 21. If you are still on Quarkus 3, stay on 1.2.x, which is maintained from the `1.x` branch.
 
 ## Docker
 
